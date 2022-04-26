@@ -1,4 +1,4 @@
-export default function PokemoCard({ name }) {
+export default function PokemonCard({ name }) {
     return 
     <span>{name}</span>;
 }

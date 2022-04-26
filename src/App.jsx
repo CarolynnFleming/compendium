@@ -1,5 +1,5 @@
 import { Link, Route, Switch } from "react-router-dom";
-import { PokemonDetail } from './views/Pokemons/Detail';
+import  PokemonDetail from './views/Pokemons/Detail';
 import PokemonList from './views/Pokemons/List';
 
 
@@ -14,7 +14,7 @@ export default function App() {
       </Route>
       <Route oath="/">
         <p>Home Page</p>
-        <link to="/Pokemons"> View List </link>
+        <Link to="/Pokemons"> View List </Link>
       </Route>
     </Switch>
   )

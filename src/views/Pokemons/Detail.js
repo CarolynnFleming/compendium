@@ -21,6 +21,16 @@ useEffect(() => {
 }, [id]);
 
 return (
-    
-)
+<>
+<p>
+    <Link to="/pokemons">Go Back </Link>
+</p>
+{ loading ? (
+    <p>Loading Pokemon</p>
+) : (
+    <h1> <PokemonCard name={`Pokemon: ${pokemon.name}`}/>
+    </h1>
+)}
+</>
+);
 }
