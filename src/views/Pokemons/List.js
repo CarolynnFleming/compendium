@@ -27,16 +27,39 @@ export default function PokemonList() {
         const getPokemons = async () => {
             const res = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex');
 
-            const { data } = await res.json();
-            const pokemonData = data.map((character) => ({
-                id: pokemons.id,
-                name: `${pokemons.name}`
-            }));
-            setPokemons(pokemonData);
+            const pokemons = await res.results.json();
+            
+            setPokemons(pokemons);
             setloading(false);
         };
         getPokemons();
     }, []);
 
-    
+    return(
+        <>
+        <h3>Pokemon Catch Them All!!</h3>
+        {loading ? (
+            <p>Loading...</p>
+        ) : (
+        <>
+        <input
+        placeholder="Find a Pokemon"
+        value={search}
+        onchange={handleSearch}/>
+        <ul>
+            {pokemonList.map((pokemon) => {
+                return(
+                    <li key={pokemon.id}>
+                        <Link to={`/pokemons/${pokemon.id}`}>
+                            <PokemonCard name={pokemon.name}/>
+                        </Link>
+                    </li>
+                );
+            })}
+        </ul>
+        </>
+        )}
+        {noResults && <p>No results</p>}
+        </>
+    );
 }
