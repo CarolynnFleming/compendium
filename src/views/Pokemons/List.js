@@ -22,4 +22,21 @@ export default function PokemonList() {
         );
         setResults(filteredPokemons);
     };
+
+    useEffect(() => {
+        const getPokemons = async () => {
+            const res = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex');
+
+            const { data } = await res.json();
+            const pokemonData = data.map((character) => ({
+                id: pokemons.id,
+                name: `${pokemons.name}`
+            }));
+            setPokemons(pokemonData);
+            setloading(false);
+        };
+        getPokemons();
+    }, []);
+
+    
 }
