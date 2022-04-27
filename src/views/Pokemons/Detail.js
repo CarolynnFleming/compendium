@@ -8,7 +8,7 @@ export default function PokemonDetail() {
     const { id } = useParams();
 useEffect(() => {
     const getPokemon = async () => {
-        const res = await fetch(`https://pokeapi.co/api/v2/pokemon/${id}`);
+        const res = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex/${id}`);
         const { data } = await res.json();
         const pokemonData = {
             id: data.id,

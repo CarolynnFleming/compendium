@@ -1,21 +1,23 @@
-import { Link, Route, Switch } from "react-router-dom";
+import { Link, Route, Switch, BrowserRouter as Router } from "react-router-dom";
 import  PokemonDetail from './views/Pokemons/Detail';
 import PokemonList from './views/Pokemons/List';
 
 
 export default function App() {
-  reutrn (
+  return (
+    <Router>
     <Switch>
       <Route path="/pokemons/:id">
        <PokemonDetail /> 
-      </Route>\
+      </Route>
       <Route path="/pokemons">
         <PokemonList />
       </Route>
-      <Route oath="/">
+      <Route path="/">
         <p>Home Page</p>
-        <Link to="/Pokemons"> View List </Link>
+        <Link to="/pokemons">View List</Link>
       </Route>
     </Switch>
+    </Router>
   )
 }
