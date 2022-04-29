@@ -18,7 +18,6 @@ await waitForElementToBeRemoved(screen.getByText(/loading/i));
         const search = screen.getByPlaceholderText('Find a Pokemon');
 
         userEvent.type(search, 'clefairy');
-        screen.debug();
 
 
         return waitFor(() => {
