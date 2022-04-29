@@ -9,10 +9,11 @@ export default function PokemonDetail() {
 useEffect(() => {
     const getPokemon = async () => {
         const res = await fetch(`https://pokedex-alchemy.herokuapp.com/api/pokedex/${id}`);
-        const { data } = await res.json();
+        const { _id, pokemon, url_image } = await res.json();
         const pokemonData = {
-            id: data.id,
-            name: `${data.name}`,
+             id: _id,
+            name: pokemon,
+            image: url_image
         };
         setPokemon(pokemonData);
         setLoading(false);
@@ -28,7 +29,7 @@ return (
 { loading ? (
     <p>Loading Pokemon</p>
 ) : (
-    <h1> <PokemonCard name={`Pokemon: ${pokemon.name}`}/>
+    <h1> <PokemonCard name={`Pokemon: ${pokemon.name} `} url_image={pokemon.image}/>
     </h1>
 )}
 </>

@@ -15,7 +15,7 @@ export default function PokemonList() {
     const handleSearch = (event) => {
         setSearch(event.target.value);
         const filteredPokemons = pokemons.filter((pokemon) =>
-        pokemon.name
+        pokemon.pokemon
         .toLowerCase()
         .includes(event.target.value.toLowerCase()
         .trim())
@@ -27,9 +27,9 @@ export default function PokemonList() {
         const getPokemons = async () => {
             const res = await fetch('https://pokedex-alchemy.herokuapp.com/api/pokedex');
 
-            const pokemons = await res.results.json();
+            const pokemons = await res.json();
             
-            setPokemons(pokemons);
+            setPokemons(pokemons.results);
             setloading(false);
         };
         getPokemons();
@@ -45,13 +45,13 @@ export default function PokemonList() {
         <input
         placeholder="Find a Pokemon"
         value={search}
-        onchange={handleSearch}/>
+        onChange={handleSearch}/>
         <ul>
             {pokemonList.map((pokemon) => {
                 return(
-                    <li key={pokemon.id}>
-                        <Link to={`/pokemons/${pokemon.id}`}>
-                            <PokemonCard name={pokemon.name}/>
+                    <li key={pokemon._id}>
+                        <Link to={`/pokemons/${pokemon._id}`}>
+                            <PokemonCard name={pokemon.pokemon}/>
                         </Link>
                     </li>
                 );
