@@ -9,7 +9,6 @@ describe('App', () => {
                 <App />
             </MemoryRouter>
         );
-        screen.debug();
 
         screen.getByText(/view list/i);
 
